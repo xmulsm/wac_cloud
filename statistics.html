@@ -26,7 +26,7 @@
 
 	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="media/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
 	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
@@ -40,7 +40,19 @@
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
+	<!-- BEGIN PAGE LEVEL STYLES --> 
+
+	<link rel="stylesheet" type="text/css" href="media/css/datepicker.css" />
+
+	<link href="media/css/jquery.fancybox.css" rel="stylesheet" />
+
+	<link href="media/css/search.css" rel="stylesheet" type="text/css"/>
+	
+
+	<!-- END PAGE LEVEL STYLES -->
+
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
+	
 
 </head>
 
@@ -103,7 +115,7 @@
 
 							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li>
 
-							<li><a href="schedule.html"><i class="icon-calendar"></i> My Schedule</a></li>
+							<li><a href="Schedule.html"><i class="icon-calendar"></i> My Schedule</a></li>
 
   						    <li class="divider"></li>
 
@@ -128,18 +140,14 @@
 		<!-- END TOP NAVIGATION BAR -->
 
 	</div>
-
 	<!-- END HEADER -->
 
-	<!-- BEGIN CONTAINER -->
+	<!-- BEGIN CONTAINER -->   
 
 	<div class="page-container row-fluid">
 
 		<!-- BEGIN SIDEBAR -->
-
-		
-
-		<div class="page-sidebar nav-collapse collapse">
+<div class="page-sidebar nav-collapse collapse">
 
 			<!-- BEGIN SIDEBAR MENU -->        
 
@@ -266,7 +274,7 @@
 
 			<!-- END SIDEBAR MENU -->
 
-		</div>
+</div>
 
 		<!-- END SIDEBAR -->
 
@@ -274,7 +282,8 @@
 
 		<div class="page-content">
 
-			
+			<!-- BEGIN PAGE CONTAINER-->
+
 			<div class="container-fluid">
 
 				<!-- BEGIN PAGE HEADER-->
@@ -283,7 +292,6 @@
 
 					<div class="span12">
 
-						
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
 						<h3 class="page-title">
@@ -304,7 +312,13 @@
 
 							</li>
 
-							<li><a href="#">Statistics</a></li>
+							<li>
+
+								<a href="statistics.html">Statistics</a>
+
+								<i class="icon-angle-right"></i>
+
+							</li>
 
 						</ul>
 
@@ -318,23 +332,80 @@
 
 				<!-- BEGIN PAGE CONTENT-->
 
-				<div class="row-fluid ">
+				<div class="row-fluid">
 
-					<div class="span12">
+								<div class="row-fluid">
 
-						
+									<div class="span10 booking-search">
 
-				    </div>
+										<form action="#">
 
+											<div class="span4">
+
+												<label>Groups</label>
+
+													<input class="m-wrap span8" type="text" placeholder="">
+
+											</div>
+
+											<div class="span6">
+
+												<div class="control-group pull-left margin-right-20">
+
+													<label class="control-label">Start Time:</label>
+
+													<div class="controls">
+
+														<div class="input-append date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+
+															<input class="m-wrap m-ctrl-medium date-picker" size="16" type="text" value="12-02-2012" /><span class="add-on"><i class="icon-calendar"></i></span>
+
+														</div>
+
+													</div>
+
+												</div>
+
+												<div class="control-group pull-right">
+
+													<label class="control-label">End Time:</label>
+
+													<div class="controls">
+
+														<div class="input-append date date-picker" data-date="102/2012" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">
+
+															<input class="m-wrap m-ctrl-medium date-picker" size="16" type="text" value="02/2012" /><span class="add-on"><i class="icon-calendar"></i></span>
+
+														</div>
+
+													</div>
+
+												</div>
+
+											</div>
+
+											<button class="btn blue btn-block">CALCULATE<i class="m-icon-swapright m-icon-white"></i></button>
+
+										</form>
+
+									</div>
+
+									<!--end booking-search-->
+
+									
+								</div>
+
+								<!--end row-fluid-->
+                        
 				<!-- END PAGE CONTENT-->
 
-			    </div>
+			</div>
 
-			<!-- END PAGE CONTAINER-->       
+			<!-- END PAGE CONTAINER--> 
 
 		</div>
 
-		<!-- BEGIN PAGE -->     
+		<!-- END PAGE -->    
 
 	</div>
 
@@ -396,15 +467,21 @@
 
 	<!-- END CORE PLUGINS -->
 
-	<script src="media/js/app.js"></script>      
+	<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+
+	<script src="media/js/jquery.fancybox.pack.js"></script>
+
+	<script src="media/js/app.js"></script>
+
+	<script src="media/js/search.js"></script>      
 
 	<script>
 
-		jQuery(document).ready(function() {       
-
-		   // initiate layout and plugins
+		jQuery(document).ready(function() {    
 
 		   App.init();
+
+		   Search.init();
 
 		});
 
