@@ -50,6 +50,10 @@
 
 <link rel="shortcut icon" href="media/image/favicon.ico" />
 
+<link href="media/css/chosen.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/jquery.fancybox.css" rel="stylesheet" />
+
 </head>
 
 <!-- END HEAD -->
@@ -272,22 +276,48 @@
 											3</a></li>
 
 									<li id="addtab" onclick=""><a href="#" data-toggle="">
-											+ </a></li>
+											+</a></li>
 
 								</ul>
+								
+								
 
 								<div class="tab-content">
+								
+								     <div class="row-fluid">
+								
+								        <div class="pull-right">
+										
+										    <form action="#" class="form-search" >
+
+												<div class="input-append">
+
+													<input class="m-wrap" type="text" /><button class="btn green" type="button">Search!</button>
+
+												</div>
+												
+											
+											</form>
+									
+
+											
+											<div class="clearfix space5"></div>
+
+										</div>
+									</div>
 
 									<div class="tab-pane active" id="portlet_tab1">
+									
+									
 
 										<div class="item text-justify">
-											<img src="../images/lamp.png" class="lamp img-responsive"
+											<img src="media/image/lamp_off.gif" class="lamp img-responsive"
 												alt="lamp" /> <label class="text-muted"
 												ondblclick="this.contentEditable=true;">lamp1</label>
 										</div>
 
 										<div class="item text-justify">
-											<img src="../images/lamp.png" class="lamp img-responsive"
+											<img src="media/image/lamp_off.gif" class="lamp img-responsive"
 												alt="lamp" /> <label class="text-muted"
 												ondblclick="this.contentEditable=true;">lamp2</label>
 										</div>
@@ -302,6 +332,9 @@
 								</div>
 
 							</div>
+							
+							
+							
 
 						</div>
 
@@ -383,6 +416,10 @@
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
 	<script src="media/js/app.js"></script>
+	
+	<script src="media/js/jquery.fancybox.pack.js"></script>   
+	
+	<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
 
 	<script src="media/js/portlet-draggable.js"></script>
 
@@ -406,8 +443,9 @@
 	jQuery(document).ready(function() {
 	    //click to add tabs
 		jQuery("#addtab").click(function() {
+		   
 			jQuery(this).before(
-			'<li class="tab" onclick=""><a href="" data-toggle="tab" ondblclick="this.contentEditable=true;">Tab 4</a></li>');
+			'<li class="tab" onclick=""><a href="#" data-toggle="tab" ondblclick="this.contentEditable=true;">Tab 4</a></li>');
 		});
 
 		jQuery(".item").css({"display" : "inline-block","text-align" : "center"});
@@ -417,9 +455,10 @@
 	//long-time touch , for lamp
 	var timeout = undefined;
 	jQuery(".lamp").bind("mousedown", function() {
+	    jQuery(this).attr("src","media/image/lamp_on.gif");
 	    timeout = setTimeout(function() {
 		alert("the lamp is lighting!");
-	    }, 2000);
+	    }, 1000);
 	});
 	jQuery(".lamp").bind("mouseup", function() {
 	    clearTimeout(timeout);
