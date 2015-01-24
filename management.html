@@ -262,7 +262,6 @@
 							<div class="tabbable tabbable-custom boxless">
 
 								<ul class="nav nav-tabs row-fluid">
-
 									<li class="active tab"><a href="#portlet_tab1"
 										data-toggle="tab">Tab 1</a></li>
 
@@ -278,55 +277,29 @@
 								</ul>
 
 								<div class="tab-content">
+
 									<div class="tab-pane active" id="portlet_tab1">
 
-										<div class="row-fluid" id="sortable_portlets">
-
-											<div class="span4 column sortable">
-												<!-- BEGIN Portlet PORTLET-->
-												<div class=" portlet box red">
-																				<div id="lamp1" class="item text-justify">
-								<img src="../images/lamp.png" class="img-responsive" alt="lamp"
-									 /><label
-									class="text-muted" ondblclick="this.contentEditable=true;">lamp1</label>
-							</div>
-												</div>
-												<!-- END Portlet PORTLET-->
-											</div>
-
-											<div class="span4 column sortable">
-												<!-- BEGIN Portlet PORTLET-->
-												<div class=" portlet box yellow">
-													<div id="lamp1" class="item text-justify">
-														<img src="../images/lamp.png" class="img-responsive"
-															alt="lamp"
-															/><label
-															class="text-muted"
-															ondblclick="this.contentEditable=true;">lamp1</label>
-													</div>
-												</div>
-											</div>
+										<div class="item text-justify">
+											<img src="../images/lamp.png" class="lamp img-responsive"
+												alt="lamp" /> <label class="text-muted"
+												ondblclick="this.contentEditable=true;">lamp1</label>
 										</div>
+
+										<div class="item text-justify">
+											<img src="../images/lamp.png" class="lamp img-responsive"
+												alt="lamp" /> <label class="text-muted"
+												ondblclick="this.contentEditable=true;">lamp2</label>
+										</div>
+
 									</div>
 
-									<div class="btn-group">
-										<a class="btn purple" href="#" data-toggle="dropdown"> <i
-											class="icon-user"></i> Settings <i class="icon-angle-down"></i>
-										</a>
-										<ul class="dropdown-menu bottom-up">
-											<li><a href="#"><i class="icon-plus"></i> Add</a></li>
-											<li><a href="#"><i class="icon-trash"></i> Edit</a></li>
-											<li><a href="#"><i class="icon-remove"></i> Delete</a></li>
-											<li class="divider"></li>
-											<li><a href="#"><i class="i"></i> Full Settings</a></li>
-										</ul>
-									</div>
+									<div class="tab-pane" id="portlet_tab2"></div>
+
+									<div class="tab-pane" id="portlet_tab3"></div>
+
 
 								</div>
-
-								<div class="tab-pane" id="portlet_tab2"></div>
-
-								<div class="tab-pane" id="portlet_tab3"></div>
 
 							</div>
 
@@ -335,18 +308,18 @@
 					</div>
 
 				</div>
+
 			</div>
 
-			<!-- END TAB-->
-
 		</div>
+
+		<!-- END PAGE -->
 
 	</div>
 
 	<!-- END PAGE CONTAINER-->
 
 
-	</div>
 
 	<!-- END PAGE CONTAINER-->
 
@@ -429,48 +402,47 @@
 
 	<!-- defined by myself -->
 	<script>
-	jQuery(document)
-		.ready(
-			function() {
-			    //click to add tabs
-			    jQuery("#addtab")
-				    .click(
-					    function() {
-						jQuery(this)
-							.before(
-								'<li class="tab"><a href="" data-toggle="tab">Tab 4</a></li>');
-					    });
+	
+	jQuery(document).ready(function() {
+	    //click to add tabs
+		jQuery("#addtab").click(function() {
+			jQuery(this).before(
+			'<li class="tab" onclick=""><a href="" data-toggle="tab" ondblclick="this.contentEditable=true;">Tab 4</a></li>');
+		});
 
-			    jQuery(".item").css({
-				"display" : "inline-block",
-				"text-align" : "center"
-			    });
-
-
-			});
-
-	jQuery(document).mousedown(function() {
-	    jQuery("[class='tab']").css("display:inline");
-	    jQuery("[class='tab']").draggable({
-		axis : 'x',
-		snap : '.ui-widget-header',
-		grid : [ jQuery("[class='tab']").width(), 0 ]
-	    });
+		jQuery(".item").css({"display" : "inline-block","text-align" : "center"});
 	});
-
-	//long-time touch
+	</script>
+	<script>
+	//long-time touch , for lamp
 	var timeout = undefined;
-
 	jQuery(".lamp").bind("mousedown", function() {
 	    timeout = setTimeout(function() {
 		alert("the lamp is lighting!");
-	    }, 000);
+	    }, 2000);
 	});
 	jQuery(".lamp").bind("mouseup", function() {
 	    clearTimeout(timeout);
 	});
-    </script>
-
+	</script>
+	<script>
+	//long-timetouch , for tab
+	var timeout1 = undefined;
+	jQuery(".tab").bind("mousedown",function() {
+	     timeout1 = setTimeout(function() {
+		jQuery(".tab").before(
+			'<li class="del_tab" onclick="alert("afds")"><img style="display:inline-block;" src="media/image/remove-icon-small.png"/></li>');
+		}, 2000);
+	});
+	jQuery(".tab").bind("mouseup", function() {
+	    clearTimeout(timeout1);
+	});
+	</script>
+	<script>
+		jQuery(document).bind("mousedown",function(){
+	    	jQuery("[class='tab']").draggable({axis:'x',snap:'.ui-widget-header',grid:[ jQuery("[class='tab']").width(),0]});
+		});
+	</script>
 </body>
 
 <!-- END BODY -->
